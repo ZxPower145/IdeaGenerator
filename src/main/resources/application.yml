@@ -1,0 +1,50 @@
+spring:
+    application:
+        name: IdeaGenerator
+
+server:
+    port: 8000
+
+llm:
+    model: "llama3-70b-8192"
+    api: "https://api.groq.com/openai/v1/chat/completions"
+    apiKey: ${GROQ_KEY}
+    maxTokens: 8192
+    noOfPicks: 20
+    apiListPath: "static/apis_list.txt"
+    initialPrompt: "
+Generate 10 simple, instructive application ideas for junior Java programmers 
+using 10 API services from the provided list. 
+As a professional senior Java programmer, tutor, and creative business evaluator, 
+create ideas that are easy to implement and educational. 
+Structure each idea as a JSON serializable object within an array, following this format:
+
+[
+  {
+    'id': 'Idea number (0-9)',
+    'title': 'Attractive, concise business title',
+    'slogan': 'Catchy, memorable slogan',
+    'description': 'Engaging description with a minimum 50 word count',
+    'pitch': 'Compelling 30-second elevator pitch',
+    'difficulty': 'Implementation difficulty (0%-100% scale)',
+    'success': 'Estimated public success chance (0%-100% scale)',
+    'api_to_use': 'Primary API service for the project',
+    'tags': ['Relevant', 'Keywords', 'For', 'The', 'Project']
+},
+    // ... 9 more idea objects
+]
+
+Replace any single quote (') with a double quote.
+    
+Ensure diversity in the selected APIs and application types. 
+Focus on practical, real-world applications that demonstrate API usage effectively. 
+Avoid repetition in ideas or descriptions. Do not include any additional commentary or 
+headers in the response.
+
+IMPORTANT: Start your response with the opening square bracket 
+'[' and end with the closing square bracket ']'. 
+Do not include any introductory text, comments, or explanations outside of the JSON array.
+IMPORTANT: Make sure to include the percentage both in difficulty and success.
+
+API List:
+"
