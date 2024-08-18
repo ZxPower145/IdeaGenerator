@@ -74,8 +74,6 @@ public class LLMService {
             """, escapeJSON(promptGenerator.getGeneratedPrompt()), llm.getModel()
         );
 
-        System.out.println(llm.getApiKey());
-
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create(llm.getApi()))
                 .header("Content-Type", "application/json")
@@ -85,7 +83,6 @@ public class LLMService {
 
         try {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
-            System.out.println(extractContentFromResponse(response.body()));
             return extractContentFromResponse(response.body());
         } catch (IOException e) {
             logger.error("org.nexus.ideagenerator.services.LLMService IOException");
