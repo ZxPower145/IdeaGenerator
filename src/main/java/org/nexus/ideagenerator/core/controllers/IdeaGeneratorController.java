@@ -1,7 +1,10 @@
 package org.nexus.ideagenerator.core.controllers;
 
+import org.nexus.ideagenerator.core.components.MDRequest;
 import org.nexus.ideagenerator.core.components.PDFRequest;
+import org.nexus.ideagenerator.core.services.FileManager;
 import org.nexus.ideagenerator.core.services.LLMService;
+import org.nexus.ideagenerator.core.services.MDManager;
 import org.nexus.ideagenerator.core.services.PDFManager;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -44,18 +47,37 @@ public class IdeaGeneratorController {
     }
 
     @GetMapping( "/download_pdf/{title}")
-    public ResponseEntity<Resource> downloadPdf(@PathVariable String title) throws IOException {
-        return PDFManager.download(title);
+    public ResponseEntity<Resource> downloadPdf(@PathVariable String title) {
+        return FileManager.download(title, "pdf");
     }
 
     @PostMapping("delete_pdf/{title}")
     public HttpStatus deletePdf(@PathVariable String title) {
-        return PDFManager.delete(title);
+        return FileManager.delete(title, "pdf");
     }
 
     @PostMapping("/generate_md")
-    public void generateMd() {
+    public HttpStatus generateMd(@RequestBody MDRequest mdRequest) {
+        return MDManager.create(
+                mdRequest.getTitle(),
+                mdRequest.getSlogan(),
+                mdRequest.getPitch(),
+                mdRequest.getDescription(),
+                mdRequest.getDifficulty(),
+                mdRequest.getSuccess(),
+                mdRequest.getApiToUse(),
+                mdRequest.getTags()
+        );
+    }
 
+    @GetMapping("/download_md/{title}")
+    public ResponseEntity<Resource> downloadMd(@PathVariable String title) {
+        return FileManager.download(title, "md");
+    }
+
+    @PostMapping("/delete_md/{title}")
+    public HttpStatus deleteMd(@PathVariable String title) {
+        return FileManager.delete(title, "md");
     }
 }
 

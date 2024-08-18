@@ -9,17 +9,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
-import org.springframework.core.io.ByteArrayResource;
-import org.springframework.core.io.Resource;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 
 import static com.itextpdf.kernel.font.PdfFontFactory.createFont;
@@ -121,30 +111,5 @@ public class PDFManager {
                 .setMarginBottom(15);
 
         document.add(contentParagraph);
-    }
-
-    public static HttpStatus delete(String title) {
-        File fileToDelete = new File(DEST + title + ".pdf");
-        boolean deleted = fileToDelete.delete();
-
-        if (deleted) {
-            return HttpStatus.OK;
-        }
-
-        return HttpStatus.NOT_FOUND;
-    }
-
-    public static ResponseEntity<Resource> download(String title) throws IOException {
-        File file = new File(DEST + title + ".pdf");
-        if (file.exists()) {
-            Path path = Paths.get(file.getAbsolutePath());
-            ByteArrayResource resource = new ByteArrayResource(Files.readAllBytes(path));
-            return ResponseEntity.ok()
-                    .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=" + file.getName())
-                    .header(HttpHeaders.CONTENT_TYPE, "application/pdf")
-                    .body(resource);
-        }
-
-        return ResponseEntity.notFound().build();
     }
 }
