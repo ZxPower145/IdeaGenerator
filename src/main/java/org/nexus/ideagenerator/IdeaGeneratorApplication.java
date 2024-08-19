@@ -9,4 +9,3 @@ public class IdeaGeneratorApplication {
         SpringApplication.run(IdeaGeneratorApplication.class, args);
     }
 }
-git

@@ -1,0 +1,10 @@
+Advice Slip: Generate random advice: https://api.adviceslip.com/advice/search/love
+Affirmations: Generate affirmations: https://www.affirmations.dev/
+Breaking Bad Quotes: Retrieve some quotes of Breaking Bad: https://api.breakingbadquotes.xyz/v1/quotes
+Dictum: Inspiring expressions: https://api.fisenko.net/v1/quotes/en?query=string&offset=0&limit=0
+Game of Thrones Quotes: Retrieve some quotes of Game of Thrones: https://api.gameofthronesquotes.xyz/v1/random
+Kanye: Kanye quotes: https://api.kanye.rest/
+Quotable: Random quotes: https://api.quotable.io/quotes/random
+Quote Garden: Database of 75000 quotes: https://quote-garden.onrender.com/api/v3/quotes
+Quotes on Design: Quotes about design: https://quotesondesign.com/wp-json/wp/v2/posts/?orderby=rand
+Ron Swanson Quotes: Ron Swanson quotes API: https://ron-swanson-quotes.herokuapp.com/v2/quotes

@@ -1,0 +1,5 @@
+Chinese Character Web: Information about Chinese characters: http://ccdb.hemiola.com/characters/radicals/85?count
+Chinese Text Project: Digital library for pre-modern Chinese texts: https://api.ctext.org/getdictionaryheadwords
+Datamuse: Query words matching conditions: https://api.datamuse.com/words?ml=ringing+in+the+ears
+Free Dictionary: Word definitions and phonetics: https://api.dictionaryapi.dev/api/v2/entries/en/digital
+PurgoMalum: Check content for profanity: https://www.purgomalum.com/service/json?text=this%20is%20some%20test%20input

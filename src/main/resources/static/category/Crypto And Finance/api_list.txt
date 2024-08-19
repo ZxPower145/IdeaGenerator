@@ -1,0 +1,20 @@
+Binance: 24 hr crypto data: https://api4.binance.com/api/v3/ticker/24hr
+CoinBase: Currency codes and names: https://api.coinbase.com/v2/currencies
+CoinCap: Real time cryptocurrency prices: https://api.coincap.io/v2/assets
+CoinDesk: Bitcoin price index: https://api.coindesk.com/v1/bpi/currentprice.json
+CoinGecko: Cryptocurrency market data: https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
+CoinLore: Cryptocurrency market data: https://api.coinlore.net/api/tickers/
+CoinMap: Crypto ATMs: https://coinmap.org/api/v1/venues/
+Coinpaprika: Cryptocurrency data: https://api.coinpaprika.com/v1/coins/btc-bitcoin
+Currency Rates: Currency exchange rates: https://cdn.jsdelivr.net/npm/@fawazahmed0/currency-api@latest/v1/currencies.json
+DEX Screener: Blockchain screener: https://api.dexscreener.com/latest/dex/search?q=WBNB%20USDC
+ExchangeRate-API: Exchange rates: https://open.er-api.com/v6/latest/USD
+GeckoTerminal: Crypto data: https://api.geckoterminal.com/api/v2/networks
+Gemini: Cryptocurrency market data: https://api.gemini.com/v2/ticker/btcusd
+Kraken: Crypto data: https://api.kraken.com/0/public/Trades?pair=ltcusd
+KuCoin: Crypto data: https://api.kucoin.com/api/v1/market/stats?symbol=BTC-USDT
+NBP Web: Currency exchange rates and gold prices: http://api.nbp.pl/api/cenyzlota/last/30/?format=json
+Nexchange: Cryptocurrency market data: https://api.n.exchange/en/api/v1/pair/
+OKX: Cryptocurrency market data: https://www.okx.com/api/v5/market/tickers?instType=SPOT
+Razorpay IFSC: Indian Financial Systems Codes: https://ifsc.razorpay.com/YESB0DNB002
+WazirX: Crypto data: https://api.wazirx.com/sapi/v1/tickers/24hr

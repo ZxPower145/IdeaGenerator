@@ -1,0 +1,4 @@
+Cocktail Database: Cocktail recipes: https://www.thecocktaildb.com/api/json/v1/1/search.php?s=margarita
+Open Brewery DB: Breweries: https://api.openbrewerydb.org/breweries
+Open Food Facts: Data on food products: https://world.openfoodfacts.org/api/v0/product/737628064502.json
+Whisky Hunter: Whisky auctions: https://whiskyhunter.net/api/auctions_data/?format=json

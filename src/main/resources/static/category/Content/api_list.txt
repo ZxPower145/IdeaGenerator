@@ -1,0 +1,21 @@
+Anime News Network: Anime/manga encyclopedia: https://cdn.animenewsnetwork.com/encyclopedia/api.xml?title=4658
+Ceska Televize: Czech television program data: https://www.ceskatelevize.cz/services-old/programme/xml/schedule.php?user=test&date=30.01.2024&channel=ct24
+Chronicling America: Historic US newspapers: https://chroniclingamerica.loc.gov/newspapers.json
+Crossref: Scholarly metadata: https://api.crossref.org/journals?query=pharmacy+health
+Final Space: Television show Final Space: https://finalspaceapi.com/api/v0/episode/
+HackerNews: Hacker News API: https://hacker-news.firebaseio.com/v0/item/8863.json
+Ice and Fire: Quantified and structured data from the universe of Ice and Fire: https://anapioficeandfire.com/api/characters/581
+Jikan: Unofficial MyAnimeList API: https://api.jikan.moe/v4/anime?q=naruto
+Listly: Top 10 lists: https://list.ly/api/v4/meta?url=http://google.com
+MCU-Countdown: When is the next MCU film?: https://www.whenisthenextmcufilm.com/api
+Mediawiki: Wikipedia page content and revisions: https://en.wikipedia.org/w/api.php?action=query&prop=revisions&titles=Pet_door&rvprop=content&format=json
+Open Library: Books and book-related data: https://openlibrary.org/search.json?q=the+lord+of+the+rings
+Reddit: Public content from Reddit: https://www.reddit.com/r/Wallstreetbets/top.json?limit=10&t=year
+Reddit Stocks: Top stocks from Wallstreetbets: https://tradestie.com/api/v1/apps/reddit
+Rick and Morty: Rick and Morty characters: https://rickandmortyapi.com/api/character/108
+STAPI: Star Trek information: https://stapi.co/api/v2/rest/spacecraft/search
+SWAPI: Star Wars information: https://swapi.dev/api/planets/3/?format=json
+The Rosary: Rosary prayers: https://the-rosary-api.vercel.app/v1/today
+TVMaze: TV show information: http://api.tvmaze.com/search/shows?q=golden girls
+Wolne Lektury: Search ebooks from wolnelektury.pl: https://wolnelektury.pl/api/authors/edgar-allan-poe/
+WordPress: Posts from any public WordPress site: https://techcrunch.com/wp-json/wp/v2/posts?per_page=100&context=embed

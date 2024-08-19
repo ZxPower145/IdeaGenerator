@@ -1,0 +1,4 @@
+HealthCare.gov: US health insurance data: https://www.healthcare.gov/api/index.json
+Makeup: Makeup brands and product info: http://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline
+NPPES: US health care providers: https://npiregistry.cms.hhs.gov/api/?version=2.1&city=baltimore
+openFDA: Food & Drug Administration data (US): https://api.fda.gov/food/enforcement.json?limit=10

@@ -13,8 +13,6 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.io.IOException;
-
 @RestController
 @RequestMapping("/api")
 @CrossOrigin("http://127.0.0.1:8080")
@@ -34,16 +32,7 @@ public class IdeaGeneratorController {
 
     @PostMapping("/generate_pdf")
     public HttpStatus generatePdf(@RequestBody PDFRequest pdfRequest) {
-        return PDFManager.create(
-                pdfRequest.getTitle(),
-                pdfRequest.getSlogan(),
-                pdfRequest.getPitch(),
-                pdfRequest.getDescription(),
-                pdfRequest.getDifficulty(),
-                pdfRequest.getSuccess(),
-                pdfRequest.getApiToUse(),
-                pdfRequest.getTags()
-        );
+        return PDFManager.create(pdfRequest);
     }
 
     @GetMapping( "/download_pdf/{title}")
@@ -58,16 +47,7 @@ public class IdeaGeneratorController {
 
     @PostMapping("/generate_md")
     public HttpStatus generateMd(@RequestBody MDRequest mdRequest) {
-        return MDManager.create(
-                mdRequest.getTitle(),
-                mdRequest.getSlogan(),
-                mdRequest.getPitch(),
-                mdRequest.getDescription(),
-                mdRequest.getDifficulty(),
-                mdRequest.getSuccess(),
-                mdRequest.getApiToUse(),
-                mdRequest.getTags()
-        );
+        return MDManager.create(mdRequest);
     }
 
     @GetMapping("/download_md/{title}")

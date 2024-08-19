@@ -9,6 +9,7 @@ import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
 import com.itextpdf.layout.property.TextAlignment;
+import org.nexus.ideagenerator.core.components.PDFRequest;
 import org.springframework.http.HttpStatus;
 import java.util.ArrayList;
 
@@ -17,18 +18,9 @@ import static com.itextpdf.kernel.font.PdfFontFactory.createFont;
 public class PDFManager {
     private static final String DEST = "src/main/resources/pdf/";
 
-    public static HttpStatus create(
-            String title,
-            String slogan,
-            String pitch,
-            String description,
-            String difficulty,
-            String success,
-            String apiToUse,
-            ArrayList<String> tags
-    ) {
+    public static HttpStatus create(PDFRequest pdfRequest) {
         try {
-            PdfWriter writer = new PdfWriter(DEST + title + ".pdf");
+            PdfWriter writer = new PdfWriter(DEST + pdfRequest.getTitle() + ".pdf");
             PdfDocument pdfDoc = new PdfDocument(writer);
             Document document = new Document(pdfDoc, PageSize.A4);
             document.setMargins(50, 50, 50, 50);
@@ -42,7 +34,7 @@ public class PDFManager {
             Color darkGrayColor = new DeviceRgb(60, 60, 60);
 
             // Title
-            Paragraph pageTitle = new Paragraph(title)
+            Paragraph pageTitle = new Paragraph(pdfRequest.getTitle())
                     .setFont(fontTitle)
                     .setFontSize(28)
                     .setFontColor(blackColor)
@@ -52,7 +44,7 @@ public class PDFManager {
             document.add(pageTitle);
 
             // Slogan
-            Paragraph pageSlogan = new Paragraph(slogan)
+        Paragraph pageSlogan = new Paragraph(pdfRequest.getSlogan())
                     .setFont(fontNormal)
                     .setFontSize(18)
                     .setFontColor(darkGrayColor)
@@ -62,17 +54,17 @@ public class PDFManager {
             document.add(pageSlogan);
 
             StringBuilder tagsToUse = new StringBuilder();
-            for (String tag : tags) {
+            for (String tag : pdfRequest.getTags()) {
                 tagsToUse.append("#").append(tag).append(" ");
             }
 
 
             // Sections with separate paragraphs for keyword and content
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Pitch", pitch);
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Description", description);
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Difficulty to Implement", difficulty);
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Success Rate", success);
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "API to Use", apiToUse);
+            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Pitch", pdfRequest.getPitch());
+            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Description", pdfRequest.getDescription());
+            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Difficulty to Implement", pdfRequest.getDifficulty());
+            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Success Rate", pdfRequest.getSuccess());
+            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "API to Use", pdfRequest.getApiToUse());
             addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Tags", tagsToUse.toString());
 
             // Close the document

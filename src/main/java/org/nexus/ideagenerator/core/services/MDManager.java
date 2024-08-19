@@ -1,34 +1,25 @@
 package org.nexus.ideagenerator.core.services;
 
+import org.nexus.ideagenerator.core.components.MDRequest;
 import org.springframework.http.HttpStatus;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.util.ArrayList;
 
 public class MDManager {
     private static final String DEST = "src/main/resources/md/";
 
-    public static HttpStatus create(
-            String title,
-            String slogan,
-            String pitch,
-            String description,
-            String success,
-            String difficulty,
-            String apiToUse,
-            ArrayList<String> tags
-    ) {
+    public static HttpStatus create(MDRequest mdRequest) {
         try {
-            FileWriter file = new FileWriter(DEST + title + ".md");
+            FileWriter file = new FileWriter(DEST + mdRequest.getTitle() + ".md");
             BufferedWriter writer = new BufferedWriter(file);
 
             // Title
-            writer.write("# **" + title + "**");
+            writer.write("# **" + mdRequest.getTitle() + "**");
             writer.newLine();
             writer.newLine();
 
-            writer.write("### **" + slogan + "**");
+            writer.write("### **" + mdRequest.getSlogan() + "**");
             writer.newLine();
             writer.write("---");
             writer.newLine();
@@ -36,29 +27,29 @@ public class MDManager {
 
             writer.write("## Description");
             writer.newLine();
-            writer.write(description);
+            writer.write(mdRequest.getDescription());
             writer.newLine();
             writer.newLine();
 
             writer.write("## Pitch");
             writer.newLine();
-            writer.write(pitch);
+            writer.write(mdRequest.getPitch());
             writer.newLine();
             writer.newLine();
 
             writer.write("## Details");
             writer.newLine();
-            writer.write("- **Difficulty:** " + difficulty);
+            writer.write("- **Difficulty:** " + mdRequest.getDifficulty());
             writer.newLine();
-            writer.write("- **Success Rate:** " + success);
+            writer.write("- **Success Rate:** " + mdRequest.getSuccess());
             writer.newLine();
-            writer.write("- **API To Use:** " + apiToUse);
+            writer.write("- **API To Use:** " + mdRequest.getApiToUse());
             writer.newLine();
             writer.newLine();
 
             writer.write("## Tags");
             writer.newLine();
-            for (String tag : tags) {
+            for (String tag : mdRequest.getTags()) {
                 writer.write("- " + tag);
                 writer.newLine();
             }
