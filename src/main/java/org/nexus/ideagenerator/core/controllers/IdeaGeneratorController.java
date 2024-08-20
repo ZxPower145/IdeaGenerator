@@ -12,6 +12,7 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -20,32 +21,32 @@ import java.util.List;
 public class IdeaGeneratorController {
     private final ApiRepository apiRepository;
     private final LLMService llmService;
-    private final PromptGenerator promptGenerator;
 
     @Autowired
-    public IdeaGeneratorController(LLMService llmService, ApiRepository apiRepository, PromptGenerator promptGenerator) {
+    public IdeaGeneratorController(LLMService llmService, ApiRepository apiRepository) {
         this.llmService = llmService;
         this.apiRepository = apiRepository;
-        this.promptGenerator = promptGenerator;
     }
 
-    @PostMapping(value = "/create")
-    public HttpStatus createApi(@RequestBody List<Api> api) {
-        for (Api apiEl : api) {
-            System.out.println(apiEl);
-            apiRepository.save(apiEl);
+    @GetMapping(value = "/get/api/all")
+    public ResponseEntity<List<Api>> getAllApis(){
+        return ResponseEntity.ok(apiRepository.findAll());
+    }
+
+    @GetMapping(value = "/get/api/category/{category}")
+    public ResponseEntity<List<Api>> getAllApisByCategory(@PathVariable String category) {
+        return ResponseEntity.ok(apiRepository.findAllByCategory(category));
+    }
+
+    @GetMapping(value = "/get/categories")
+    public ResponseEntity<List<String>> getAllCategories() {
+        List<String> allCategories = new ArrayList<>();
+        for (Api api : apiRepository.findAll()) {
+            if (!allCategories.contains(api.getCategory())) {
+                allCategories.add(api.getCategory());
+            };
         }
-        return HttpStatus.CREATED;
-    }
-
-    @GetMapping(value = "/get/pickedApis")
-    public String getPickedApis() {
-        return promptGenerator.getGeneratedPrompt();
-    }
-
-    @GetMapping(value = "/get")
-    public List<Api> getAll(){
-        return apiRepository.findAll();
+        return ResponseEntity.ok(allCategories);
     }
 
     @GetMapping(value = "/generate", produces = MediaType.APPLICATION_JSON_VALUE)

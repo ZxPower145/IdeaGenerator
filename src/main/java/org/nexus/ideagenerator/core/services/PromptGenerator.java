@@ -36,9 +36,9 @@ public class PromptGenerator {
         return apiRepository.findAll();
     }
 
-    private List<Api> pickRandomApis() {
+    private List<String> pickRandomApis() {
         Random rand = new Random();
-        List<Api> pickedApis = new ArrayList<>(noOfPicks);
+        List<String> pickedApis = new ArrayList<>(noOfPicks);
 
         if (apiList.isEmpty()) {
             return pickedApis;
@@ -46,38 +46,13 @@ public class PromptGenerator {
 
         while (pickedApis.size() < noOfPicks) {
             int random = rand.nextInt(apiList.size());
-            pickedApis.add(apiList.remove(random));
+            pickedApis.add(apiList.remove(random).toString());
         }
 
         return pickedApis;
     }
 
     public String getGeneratedPrompt() {
-        if (apiList.isEmpty()) {
-            return "APIList empty";
-        }
-        List<Api> apis = pickRandomApis();
-        StringBuilder apiJSONList = new StringBuilder();
-        apiJSONList.append("[");
-        for (int i = 0; i < apis.size(); i++) {
-            Api api = apis.get(i);
-            String apiJSONString = String.format("""
-                {
-                    "title": %s,
-                    "category": %s,
-                    "url": %s
-                }%s
-                """,
-                    escapeJSON(api.getTitle()),
-                    escapeJSON(api.getCategory()),
-                    escapeJSON(api.getUrl()),
-                    i == apis.size() - 1 ? "" : ",");
-            apiJSONList.append(apiJSONString);
-        }
-        apiJSONList.append("]");
-        return initialPrompt + apiJSONList;
-    }
-    private String escapeJSON(String value) {
-        return "\"" + value.replace("\"", "\\\"") + "\"";
+        return initialPrompt + pickRandomApis().toString();
     }
 }
