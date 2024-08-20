@@ -85,9 +85,9 @@ public class LLMService {
             HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
             return extractContentFromResponse(response.body());
         } catch (IOException e) {
-            logger.error("org.nexus.ideagenerator.services.LLMService IOException");
+            logger.error("org.nexus.ideagenerator.services.LLMService IOException", e);
         } catch (InterruptedException e) {
-            logger.error("org.nexus.ideagenerator.services.LLMService InterruptedException");
+            logger.error("org.nexus.ideagenerator.services.LLMService InterruptedException", e);
         }
         return "An error occurred";
     }

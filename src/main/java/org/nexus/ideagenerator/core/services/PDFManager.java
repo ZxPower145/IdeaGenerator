@@ -1,14 +1,15 @@
 package org.nexus.ideagenerator.core.services;
 
-import com.itextpdf.kernel.color.Color;
-import com.itextpdf.kernel.color.DeviceRgb;
+import com.itextpdf.kernel.colors.Color;
+import com.itextpdf.kernel.colors.DeviceGray;
+import com.itextpdf.kernel.colors.DeviceRgb;
 import com.itextpdf.kernel.font.PdfFont;
 import com.itextpdf.kernel.geom.PageSize;
 import com.itextpdf.kernel.pdf.PdfDocument;
 import com.itextpdf.kernel.pdf.PdfWriter;
 import com.itextpdf.layout.Document;
 import com.itextpdf.layout.element.Paragraph;
-import com.itextpdf.layout.property.TextAlignment;
+import com.itextpdf.layout.properties.TextAlignment;
 import org.nexus.ideagenerator.core.components.PDFRequest;
 import org.springframework.http.HttpStatus;
 import java.util.ArrayList;
@@ -60,12 +61,12 @@ public class PDFManager {
 
 
             // Sections with separate paragraphs for keyword and content
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Pitch", pdfRequest.getPitch());
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Description", pdfRequest.getDescription());
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Difficulty to Implement", pdfRequest.getDifficulty());
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Success Rate", pdfRequest.getSuccess());
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "API to Use", pdfRequest.getApiToUse());
-            addSection(document, fontTitle, fontNormal, Color.DARK_GRAY, "Tags", tagsToUse.toString());
+            addSection(document, fontTitle, fontNormal, DeviceGray.GRAY, "Pitch", pdfRequest.getPitch());
+            addSection(document, fontTitle, fontNormal, DeviceGray.GRAY, "Description", pdfRequest.getDescription());
+            addSection(document, fontTitle, fontNormal, DeviceGray.GRAY, "Difficulty to Implement", pdfRequest.getDifficulty());
+            addSection(document, fontTitle, fontNormal, DeviceGray.GRAY, "Success Rate", pdfRequest.getSuccess());
+            addSection(document, fontTitle, fontNormal, DeviceGray.GRAY, "API to Use", pdfRequest.getApiToUse());
+            addSection(document, fontTitle, fontNormal, DeviceGray.GRAY, "Tags", tagsToUse.toString());
 
             // Close the document
             document.close();
