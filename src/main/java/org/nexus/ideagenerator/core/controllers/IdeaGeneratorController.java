@@ -28,17 +28,17 @@ public class IdeaGeneratorController {
         this.apiRepository = apiRepository;
     }
 
-    @GetMapping(value = "/get/api/all")
+    @GetMapping(value = "/get/all_api")
     public ResponseEntity<List<Api>> getAllApis(){
         return ResponseEntity.ok(apiRepository.findAll());
     }
 
-    @GetMapping(value = "/get/api/category/{category}")
+    @GetMapping(value = "/get/category/{category}")
     public ResponseEntity<List<Api>> getAllApisByCategory(@PathVariable String category) {
         return ResponseEntity.ok(apiRepository.findAllByCategory(category));
     }
 
-    @GetMapping(value = "/get/categories")
+    @GetMapping(value = "/get/all_categories")
     public ResponseEntity<List<String>> getAllCategories() {
         List<String> allCategories = new ArrayList<>();
         for (Api api : apiRepository.findAll()) {
@@ -49,7 +49,7 @@ public class IdeaGeneratorController {
         return ResponseEntity.ok(allCategories);
     }
 
-    @GetMapping(value = "/generate", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/get/ideas", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<String> generate() {
         String response = llmService.generateResponse();
         return ResponseEntity.ok(response);

@@ -7,7 +7,6 @@ import org.nexus.ideagenerator.core.components.LLM;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -19,11 +18,9 @@ import java.nio.charset.StandardCharsets;
 
 @Service("LLMService")
 public class LLMService {
-    private LLM llm;
-    private PromptGenerator promptGenerator;
+    private final LLM llm;
+    private final PromptGenerator promptGenerator;
     private final HttpClient client;
-    @Value("${llm.maxTokens}")
-    private int maxTokens;
 
     private final ObjectMapper objectMapper = new ObjectMapper();
     private static final Logger logger = LoggerFactory.getLogger(LLMService.class);
@@ -33,22 +30,6 @@ public class LLMService {
         this.llm = llm;
         this.promptGenerator = promptGenerator;
         this.client = HttpClient.newHttpClient();
-    }
-
-    public LLM getLlm() {
-        return llm;
-    }
-
-    public void setLlm(LLM llm) {
-        this.llm = llm;
-    }
-
-    public PromptGenerator getPromptGenerator() {
-        return promptGenerator;
-    }
-
-    public void setPromptGenerator(PromptGenerator promptGenerator) {
-        this.promptGenerator = promptGenerator;
     }
 
     private String escapeJSON(String input){
